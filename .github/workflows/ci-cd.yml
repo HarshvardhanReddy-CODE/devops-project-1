@@ -30,11 +30,11 @@ jobs:
 
       - name: Lint with flake8
         run: |
-          flake8 app/app.py --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 app/api.py --count --select=E9,F63,F7,F82 --show-source --statistics
 
       - name: Check code format
         run: |
-          black --check app/app.py
+          black --check app/api.py
 
   test:
     name: Test API
@@ -71,8 +71,8 @@ jobs:
           DB_USER: postgres
           DB_PASSWORD: postgres
         run: |
-          cd app && python -c "from app import app; print('App imports successfully')"
-          cd app && python -c "import os; os.environ['DB_HOST'] = 'localhost'; os.environ['DB_NAME'] = 'todoapp'; os.environ['DB_USER'] = 'postgres'; os.environ['DB_PASSWORD'] = 'postgres'; from app import app; client = app.test_client(); response = client.get('/api/health'); print('Health check status: ' + str(response.status_code))"
+          python -c "from api import app; print('App imports successfully')"
+          python -c "import os; os.environ['DB_HOST'] = 'localhost'; os.environ['DB_NAME'] = 'todoapp'; os.environ['DB_USER'] = 'postgres'; os.environ['DB_PASSWORD'] = 'postgres'; from api import app; client = app.test_client(); response = client.get('/api/health'); print('Health check status: ' + str(response.status_code))"
 
   build:
     name: Build and Push Docker Image
