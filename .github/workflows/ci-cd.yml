@@ -71,8 +71,8 @@ jobs:
           DB_USER: postgres
           DB_PASSWORD: postgres
         run: |
-          python -c "from api import app; print('App imports successfully')"
-          python -c "import os; os.environ['DB_HOST'] = 'localhost'; os.environ['DB_NAME'] = 'todoapp'; os.environ['DB_USER'] = 'postgres'; os.environ['DB_PASSWORD'] = 'postgres'; from api import app; client = app.test_client(); response = client.get('/api/health'); print('Health check status: ' + str(response.status_code))"
+          python -c "from app.api import app; print('App imports successfully')"
+          python -c "import os; os.environ['DB_HOST'] = 'localhost'; os.environ['DB_NAME'] = 'todoapp'; os.environ['DB_USER'] = 'postgres'; os.environ['DB_PASSWORD'] = 'postgres'; from app.api import app; client = app.test_client(); response = client.get('/api/health'); print('Health check status: ' + str(response.status_code))"
 
   build:
     name: Build and Push Docker Image
