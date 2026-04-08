@@ -17,13 +17,9 @@ WORKDIR /app
 COPY --from=builder /usr/local/lib/python3.13/site-packages /usr/local/lib/python3.13/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
 
-COPY app.py .
+COPY api.py .
 
 ENV PYTHONUNBUFFERED=1
-ENV DB_HOST=localhost
-ENV DB_NAME=todoapp
-ENV DB_USER=postgres
-ENV DB_PASSWORD=postgres
 
 EXPOSE 5000
 
