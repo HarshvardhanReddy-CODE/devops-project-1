@@ -30,7 +30,7 @@ A beginner-friendly DevOps project demonstrating CI/CD pipelines with Docker, Po
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## API Endpoints
+## API Endpoints 
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
